@@ -26,11 +26,11 @@ export const metadata: Metadata = {
   category: "Photography",
   alternates: { canonical: `${siteUrl}/` },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
     googleBot: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
       noimageindex: false,
       "max-image-preview": "large",
       "max-snippet": -1,

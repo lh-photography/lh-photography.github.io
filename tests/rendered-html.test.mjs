@@ -3,6 +3,7 @@ import { readFileSync, statSync } from "node:fs";
 import test from "node:test";
 
 const noIndexMeta = /<meta(?=[^>]*\bname=["']robots["'])(?=[^>]*\bcontent=["'][^"']*noindex[^"']*nofollow[^"']*["'])[^>]*>/i;
+const indexMeta = /<meta(?=[^>]*\bname=["']robots["'])(?=[^>]*\bcontent=["'][^"']*index[^"']*follow[^"']*["'])[^>]*>/i;
 const socialImageMeta = /<meta(?=[^>]*\bproperty=["']og:image["'])(?=[^>]*\bcontent=["'][^"']*\/og\.png["'])[^>]*>/i;
 const canonicalMeta = /<link(?=[^>]*\brel=["']canonical["'])(?=[^>]*\bhref=["']https:\/\/lh-photography\.github\.io\/?["'])[^>]*>/i;
 
@@ -56,13 +57,14 @@ test("renders the cleaner portfolio tabs, pricing, booking form and metadata", a
   assert.match(html, /ProfessionalService/i);
   assert.match(html, /sports photographer Chelmsford/i);
   assert.doesNotMatch(html, /louieharrington28/i);
-  assert.match(html, noIndexMeta);
+  assert.doesNotMatch(html, noIndexMeta);
+  assert.match(html, indexMeta);
   assert.match(html, socialImageMeta);
   assert.match(html, canonicalMeta);
   assert.doesNotMatch(html, /codex-preview/i);
 });
 
-test("serves future-ready robots and sitemap files while pages remain noindex", async () => {
+test("serves crawlable robots and sitemap files", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("seo-test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
