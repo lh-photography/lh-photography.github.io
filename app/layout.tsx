@@ -6,7 +6,7 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://lh-photography.git
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Chelmsford Photographer | Louie Harrington Photography",
-  description: "Chelmsford and Danbury photographer Louie Harrington, covering football, sports, action, cars, portraits, weddings, family sessions and property photography across Essex.",
+  description: "Chelmsford and Danbury photographer Louie Harrington, covering football, sports, action, cars, portraits, assistant wedding photography, family sessions and property photography across Essex.",
   keywords: [
     "Louie Harrington Photography",
     "Chelmsford photographer",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "sports photographer Chelmsford",
     "football photographer Essex",
     "car photography Chelmsford",
-    "wedding photography Chelmsford",
+    "assistant wedding photographer Chelmsford",
     "family photographer Chelmsford",
     "property photography Essex",
     "action photographer Essex",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Chelmsford Photographer | Louie Harrington Photography",
-    description: "Sports, cars, portraits, weddings and moments photographed around Chelmsford, Danbury and Essex.",
+    description: "Sports, cars, portraits, assistant wedding photography and moments photographed around Chelmsford, Danbury and Essex.",
     type: "website",
     url: `${siteUrl}/`,
     siteName: "Louie Harrington Photography",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Chelmsford Photographer | Louie Harrington Photography",
-    description: "Sports, cars, portraits, weddings and moments photographed around Chelmsford, Danbury and Essex.",
+    description: "Sports, cars, portraits, assistant wedding photography and moments photographed around Chelmsford, Danbury and Essex.",
     images: [`${siteUrl}/og.png`],
   },
   icons: {
@@ -73,7 +73,7 @@ const structuredData = {
       url: `${siteUrl}/`,
       logo: `${siteUrl}/photos/logo.jpg`,
       image: `${siteUrl}/og.png`,
-      description: "Photography in Chelmsford, Danbury and across Essex, specialising in sports, football, action, automotive, portraits, weddings, family sessions and property photography.",
+      description: "Photography in Chelmsford, Danbury and across Essex, specialising in sports, football, action, automotive, portraits, assistant wedding photography, family sessions and property photography.",
       priceRange: "£25–£45+",
       areaServed: [
         { "@type": "City", name: "Chelmsford" },
@@ -86,7 +86,7 @@ const structuredData = {
         "Action and motorsport photography",
         "Automotive photography",
         "Portrait photography",
-        "Wedding photography",
+        "Assistant wedding photography",
         "Family photography",
         "Property photography",
       ],
@@ -103,8 +103,8 @@ const structuredData = {
             "@type": "Offer",
             price: "45",
             priceCurrency: "GBP",
-            description: "Wedding coverage from £45",
-            itemOffered: { "@type": "Service", name: "Wedding photography" },
+            description: "Assistant wedding photography from £45",
+            itemOffered: { "@type": "Service", name: "Assistant wedding photographer" },
           },
           {
             "@type": "Offer",

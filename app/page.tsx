@@ -5,7 +5,7 @@ import { type FormEvent, type KeyboardEvent as ReactKeyboardEvent, useEffect, us
 
 export const dynamic = "force-static";
 
-type Category = "Football" | "Automotive" | "Action & Motorsport" | "City & Architecture" | "Portraits";
+type Category = "Football" | "Automotive" | "Action & Motorsport" | "City & Architecture" | "Portraits" | "Weddings";
 
 type Photograph = {
   src: string;
@@ -33,6 +33,11 @@ const photographs: Photograph[] = [
   { src: "/photos/photo-12.jpg", alt: "Studio headshot portrait photographed by Louie Harrington", number: "12", title: "Headshot Study", category: "Portraits", shape: "portrait" },
   { src: "/photos/photo-13.jpg", alt: "Close overhead view of two motorcycle racers leaning through a corner", number: "13", title: "Close Pursuit", category: "Action & Motorsport", shape: "portrait" },
   { src: "/photos/photo-14.jpg", alt: "Motorcycle racer captured at speed with a motion-blurred circuit behind", number: "14", title: "Track Speed", category: "Action & Motorsport", shape: "portrait" },
+  { src: "/photos/photo-15.jpg", alt: "Two wedding rings resting on a personalised wooden ring box", number: "15", title: "The Rings", category: "Weddings", shape: "portrait" },
+  { src: "/photos/photo-16.jpg", alt: "Groom's shoes, bow tie, watch and accessories arranged by a window", number: "16", title: "Groom's Details", category: "Weddings", shape: "landscape" },
+  { src: "/photos/photo-17.jpg", alt: "Wedding seating plan beside a blue-and-white floral arrangement", number: "17", title: "Find Your Seat", category: "Weddings", shape: "portrait" },
+  { src: "/photos/photo-18.jpg", alt: "Newly married couple kissing outside a dark timber building", number: "18", title: "Just Married", category: "Weddings", shape: "portrait" },
+  { src: "/photos/photo-19.jpg", alt: "Newly married couple kissing beside a framed wedding welcome sign", number: "19", title: "The Welcome", category: "Weddings", shape: "portrait" },
 ];
 
 const categories: Array<{ name: Category; id: string; note: string }> = [
@@ -41,14 +46,15 @@ const categories: Array<{ name: Category; id: string; note: string }> = [
   { name: "Action & Motorsport", id: "action", note: "Movement held at exactly the right moment." },
   { name: "City & Architecture", id: "city", note: "Lines, landmarks and new angles on familiar places." },
   { name: "Portraits", id: "portraits", note: "Character-led portraits with a natural, considered feel." },
+  { name: "Weddings", id: "weddings", note: "Details and moments captured while assisting the lead photographer." },
 ];
 
 const services = [
   {
-    name: "Wedding coverage",
+    name: "Assistant wedding photographer",
     price: "From £45",
-    kicker: "Ceremonies & celebrations",
-    description: "Natural photographs of the ceremony and the moments around it. Share the date, venue and coverage you need for a tailored quote.",
+    kicker: "Supporting wedding coverage",
+    description: "Natural photographs of the ceremony and the moments around it, captured while assisting the lead photographer. Share the date, venue and coverage needed for a tailored quote.",
   },
   {
     name: "One-hour car shoot",
@@ -293,7 +299,7 @@ export default function Home() {
             <div className="about__details">
               <img className="about__logo" src={publicPath("/photos/logo.jpg")} alt="Louie Harrington Photography logo" />
               <div className="about__copy">
-                <p>Louie Harrington is a young photographer developing a portfolio across sport, action, automotive, portraits and city photography.</p>
+                <p>Louie Harrington is a young photographer developing a portfolio across sport, action, automotive, portraits, city and assistant wedding photography.</p>
                 <p>His work looks for the decisive moment: the split second where movement, expression and composition come together.</p>
               </div>
             </div>

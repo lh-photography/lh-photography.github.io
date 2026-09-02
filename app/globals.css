@@ -276,7 +276,7 @@ footer > a:focus-visible::after {
   border-bottom: 1px solid var(--line);
   border-top: 1px solid var(--line);
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   margin-bottom: clamp(64px, 8vw, 110px);
 }
 

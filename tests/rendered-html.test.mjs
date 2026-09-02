@@ -42,8 +42,10 @@ test("renders the cleaner portfolio tabs, pricing, booking form and metadata", a
   assert.match(html, /Automotive/i);
   assert.match(html, /Football/i);
   assert.match(html, /Portraits/i);
+  assert.match(html, /Weddings/i);
   assert.match(html, /role="tablist"/i);
-  assert.match(html, /Wedding coverage/i);
+  assert.match(html, /Assistant wedding photographer/i);
+  assert.match(html, /assisting the lead photographer/i);
   assert.match(html, /From £45/i);
   assert.match(html, /One-hour car shoot/i);
   assert.match(html, /£25/i);
@@ -86,7 +88,7 @@ test("serves crawlable robots and sitemap files", async () => {
 
 test("includes every supplied photograph and the supplied logo", () => {
   const assets = [
-    ...Array.from({ length: 14 }, (_, index) => `../public/photos/photo-${String(index + 1).padStart(2, "0")}.jpg`),
+    ...Array.from({ length: 19 }, (_, index) => `../public/photos/photo-${String(index + 1).padStart(2, "0")}.jpg`),
     "../public/photos/louie-portrait.jpg",
     "../public/photos/logo.jpg",
   ];
@@ -108,7 +110,7 @@ test("validates booking requests without exposing the recipient", async () => {
   const invalid = await worker.fetch(new Request("http://localhost/api/enquiry", {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({ name: "A", email: "not-an-email", service: "Wedding coverage", message: "Too short" }),
+    body: JSON.stringify({ name: "A", email: "not-an-email", service: "Assistant wedding photographer", message: "Too short" }),
   }), env, ctx);
   assert.equal(invalid.status, 400);
 

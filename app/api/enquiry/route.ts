@@ -1,5 +1,5 @@
 const serviceOptions = new Set([
-  "Wedding coverage",
+  "Assistant wedding photographer",
   "One-hour car shoot",
   "Family or property photos",
   "Something else",
