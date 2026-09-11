@@ -1,6 +1,6 @@
 # LH Photography image slots
 
-Add the approved original photographs here as `photo-01.jpg` through `photo-19.jpg`.
+Add the approved original photographs here as `photo-01.jpg` through `photo-26.jpg`.
 
 Add the approved logo as `logo.jpg`.
 

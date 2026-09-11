@@ -358,6 +358,13 @@ footer > a:focus-visible::after {
 .tab-gallery .gallery-item:nth-child(3) { grid-column: 2 / span 4; }
 .tab-gallery .gallery-item:nth-child(4) { grid-column: 7 / span 5; }
 .tab-gallery .gallery-item:nth-child(5) { grid-column: 4 / span 5; }
+.tab-gallery .gallery-item:nth-child(6) { grid-column: 1 / span 6; }
+.tab-gallery .gallery-item:nth-child(7) { grid-column: 8 / span 4; }
+.tab-gallery .gallery-item:nth-child(8) { grid-column: 2 / span 5; }
+.tab-gallery .gallery-item:nth-child(9) { grid-column: 8 / span 5; }
+.tab-gallery .gallery-item:nth-child(10) { grid-column: 1 / span 4; }
+.tab-gallery .gallery-item:nth-child(11) { grid-column: 6 / span 6; }
+.tab-gallery .gallery-item:nth-child(12) { grid-column: 4 / span 5; }
 .tab-gallery--portraits .gallery-item:first-child { grid-column: 4 / span 5; }
 
 .gallery-item--portrait .photo-surface { aspect-ratio: 3 / 4; }
@@ -481,7 +488,7 @@ footer > a:focus-visible::after {
   margin-top: clamp(56px, 8vw, 110px);
 }
 
-.about__portrait { aspect-ratio: 4 / 3; overflow: hidden; }
+.about__portrait { aspect-ratio: 4 / 3; overflow: hidden; position: relative; }
 .about__portrait img { height: 100%; object-fit: cover; width: 100%; }
 .about__details { padding-top: 6px; }
 .about__logo { height: auto; max-width: 320px; width: min(100%, 320px); }

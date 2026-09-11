@@ -9,6 +9,7 @@ const nextConfig: NextConfig = isGitHubPages
       ...(githubPagesBasePath
         ? { basePath: githubPagesBasePath, assetPrefix: githubPagesBasePath }
         : {}),
+      images: { unoptimized: true },
       trailingSlash: true,
       typescript: { ignoreBuildErrors: true },
     }

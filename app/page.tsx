@@ -1,6 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
+import Image from "next/image";
 import { type FormEvent, type KeyboardEvent as ReactKeyboardEvent, useEffect, useState } from "react";
 
 export const dynamic = "force-static";
@@ -34,10 +34,17 @@ const photographs: Photograph[] = [
   { src: "/photos/photo-13.jpg", alt: "Close overhead view of two motorcycle racers leaning through a corner", number: "13", title: "Close Pursuit", category: "Action & Motorsport", shape: "portrait" },
   { src: "/photos/photo-14.jpg", alt: "Motorcycle racer captured at speed with a motion-blurred circuit behind", number: "14", title: "Track Speed", category: "Action & Motorsport", shape: "portrait" },
   { src: "/photos/photo-15.jpg", alt: "Two wedding rings resting on a personalised wooden ring box", number: "15", title: "The Rings", category: "Weddings", shape: "portrait" },
+  { src: "/photos/photo-20.jpg", alt: "Bride holding a white bouquet while looking into an ornate mirror", number: "20", title: "Bridal Portrait", category: "Weddings", shape: "portrait" },
+  { src: "/photos/photo-21.jpg", alt: "Bride applying perfume in front of an ornate mirror", number: "21", title: "Finishing Touches", category: "Weddings", shape: "portrait" },
   { src: "/photos/photo-16.jpg", alt: "Groom's shoes, bow tie, watch and accessories arranged by a window", number: "16", title: "Groom's Details", category: "Weddings", shape: "landscape" },
+  { src: "/photos/photo-22.jpg", alt: "Groom adjusting his waistcoat while reflected in a mirror", number: "22", title: "Before the Ceremony", category: "Weddings", shape: "portrait" },
+  { src: "/photos/photo-23.jpg", alt: "Black-and-white close-up of the groom's watch, cufflink and ring", number: "23", title: "Time & Detail", category: "Weddings", shape: "portrait" },
+  { src: "/photos/photo-24.jpg", alt: "Framed welcome sign outside the wedding venue", number: "24", title: "The Welcome", category: "Weddings", shape: "portrait" },
   { src: "/photos/photo-17.jpg", alt: "Wedding seating plan beside a blue-and-white floral arrangement", number: "17", title: "Find Your Seat", category: "Weddings", shape: "portrait" },
+  { src: "/photos/photo-25.jpg", alt: "Black-and-white view of the couple exchanging vows beneath a flower-covered canopy", number: "25", title: "The Ceremony", category: "Weddings", shape: "portrait" },
   { src: "/photos/photo-18.jpg", alt: "Newly married couple kissing outside a dark timber building", number: "18", title: "Just Married", category: "Weddings", shape: "portrait" },
-  { src: "/photos/photo-19.jpg", alt: "Newly married couple kissing beside a framed wedding welcome sign", number: "19", title: "The Welcome", category: "Weddings", shape: "portrait" },
+  { src: "/photos/photo-26.jpg", alt: "Close portrait of the newly married couple framed by soft green leaves", number: "26", title: "Among the Leaves", category: "Weddings", shape: "portrait" },
+  { src: "/photos/photo-19.jpg", alt: "Newly married couple kissing beside a framed wedding welcome sign", number: "19", title: "A Quiet Moment", category: "Weddings", shape: "portrait" },
 ];
 
 const categories: Array<{ name: Category; id: string; note: string }> = [
@@ -78,16 +85,26 @@ const publicPath = (path: string) => `${publicBasePath}${path}`;
 function Brand() {
   return (
     <a className="brand" href="#top" aria-label="Louie Harrington Photography — home">
-      <img className="brand__image" src={publicPath("/photos/logo.jpg")} alt="" />
+      <Image className="brand__image" src={publicPath("/photos/logo.jpg")} alt="" width={40} height={40} sizes="40px" />
       <span className="brand__name">Louie Harrington</span>
     </a>
   );
 }
 
-function Photo({ photograph, className = "" }: { photograph: Photograph; className?: string }) {
+function Photo({
+  photograph,
+  className = "",
+  priority = false,
+  sizes = "(max-width: 620px) calc(100vw - 32px), (max-width: 900px) 48vw, 40vw",
+}: {
+  photograph: Photograph;
+  className?: string;
+  priority?: boolean;
+  sizes?: string;
+}) {
   return (
     <div className={`photo-surface ${className}`}>
-      <img src={publicPath(photograph.src)} alt={photograph.alt} loading={photograph.number === "01" ? "eager" : "lazy"} />
+      <Image src={publicPath(photograph.src)} alt={photograph.alt} fill sizes={sizes} priority={priority} />
     </div>
   );
 }
@@ -202,7 +219,7 @@ export default function Home() {
           </div>
         </div>
         <div className="hero__visual">
-          <Photo photograph={photographs[0]} />
+          <Photo photograph={photographs[0]} priority sizes="(max-width: 900px) 100vw, 56vw" />
           <p className="image-note"><span>St Paul&apos;s, London</span><span>01 / {photographs.length}</span></p>
         </div>
       </section>
@@ -295,9 +312,9 @@ export default function Home() {
         <div className="about__content">
           <h2 id="about-title">Sports, action and moments—seen through Louie&apos;s lens.</h2>
           <div className="about__profile">
-            <div className="about__portrait"><img src={publicPath("/photos/louie-portrait.jpg")} alt="Louie Harrington photographing from the sideline" /></div>
+            <div className="about__portrait"><Image src={publicPath("/photos/louie-portrait.jpg")} alt="Louie Harrington photographing from the sideline" fill sizes="(max-width: 900px) 100vw, 42vw" /></div>
             <div className="about__details">
-              <img className="about__logo" src={publicPath("/photos/logo.jpg")} alt="Louie Harrington Photography logo" />
+              <Image className="about__logo" src={publicPath("/photos/logo.jpg")} alt="Louie Harrington Photography logo" width={320} height={320} sizes="(max-width: 620px) calc(100vw - 32px), 320px" />
               <div className="about__copy">
                 <p>Louie Harrington is a young photographer developing a portfolio across sport, action, automotive, portraits, city and assistant wedding photography.</p>
                 <p>His work looks for the decisive moment: the split second where movement, expression and composition come together.</p>
@@ -372,7 +389,7 @@ export default function Home() {
           <button className="lightbox__close" type="button" aria-label="Close photograph viewer" onClick={() => setSelectedIndex(null)}>Close</button>
           <button className="lightbox__arrow lightbox__arrow--left" type="button" aria-label="Previous photograph" onClick={(event) => { event.stopPropagation(); showPrevious(); }}>←</button>
           <div className="lightbox__image" onClick={(event) => event.stopPropagation()}>
-            <Photo photograph={photographs[selectedIndex]} />
+            <Photo photograph={photographs[selectedIndex]} priority sizes="100vw" />
             <p><span>{photographs[selectedIndex].category} · {photographs[selectedIndex].title}</span><span>{photographs[selectedIndex].number} / {photographs.length}</span></p>
           </div>
           <button className="lightbox__arrow lightbox__arrow--right" type="button" aria-label="Next photograph" onClick={(event) => { event.stopPropagation(); showNext(); }}>→</button>
